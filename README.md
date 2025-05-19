@@ -1,50 +1,106 @@
-# Welcome to your Expo app 👋
+# 📘 Coding Challenge App (React Native + Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a daily coding challenge app built using **React Native**, **Expo Router**, **Native Notifications**, **Notes**, **Timers (stopwatch, timers with history functionalities)**. It allows users to browse, view, and complete programming problems with daily reminders, notifications, notes management, time management.
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 Features
 
-   ```bash
-   npm install
-   ```
+-   📃 **Notes feature** for tracking solutions and thoughts
+-   ⏱️ **Timer functionalities**:
+-   Stopwatch for tracking solving time
+-   Custom timers with history
+-   📊 **Stats tracking** for completed challenges
+-   🎯 **Progress indicators** for daily goals
+-   🔄 **Practice mode** for revisiting completed challenges
+-   📱 **Cross-platform** support (iOS & Android)
+-   ✅ Daily **coding questions** with detail pages
+-   🧠 Tracks **completed questions** using AsyncStorage
+-   🔔 Sends **local notifications**:
+    -   ⏰ Midnight unlock notification
+    -   ⚠️ Evening reminder if question is not completed
+-   📁 Drawer Navigation for quick access
+-   📦 Ready for **APK export** using EAS or prebuild
+-   🌙 Designed with **mobile responsiveness**
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## 🛠️ Setup
 
 ```bash
-npm run reset-project
+# 1. Clone this repo
+git clone <your-repo-url>
+cd <project-folder>
+
+# 2. Install dependencies
+npm install
+
+# 3. Run on Android
+npx expo run:android
+
+# 4. (Optional) Build APK using EAS
+eas build -p android --profile preview
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🔔 Notifications
 
-To learn more about developing your project with Expo, look at the following resources:
+This app uses [`expo-notifications`](https://docs.expo.dev/versions/latest/sdk/notifications/) to send local alerts:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+-   **12:00 AM** – "🎯 New coding challenge is available!"
+-   **8:00 PM** – "⏳ Don’t forget to complete today’s challenge!" (Only if incomplete)
 
-## Join the community
+> Notifications require a **development build** (not Expo Go).
 
-Join our community of developers creating universal apps.
+### To Test Locally:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npx expo install expo-dev-client
+eas build:configure
+npx expo run:android
+```
+
+---
+
+## 💾 Persistent Storage
+
+-   Uses `AsyncStorage` to remember if a user has completed today's question.
+-   Data format: `{ "1-Mon May 18 2025": true }`
+
+---
+
+## 🚀 Exporting APK
+
+> Expo Go cannot handle all features (e.g., notifications). Use a custom build:
+
+```bash
+# Step 1: Prebuild the native project
+npx expo prebuild
+
+# Step 2: Build APK
+eas build -p android --profile preview
+```
+
+> Requires login to EAS (you can use a free account).
+
+---
+
+## 🧠 Future Improvements
+
+-   🔥 Background sync using Headless JS
+-   🌐 Remote question loading via API
+-   👤 User auth + profile
+-   📊 Daily streak tracking
+
+---
+
+## 📸 Screenshots
+
+---
+
+## 🙌 Acknowledgements
+
+-   [Expo](https://expo.dev/)
+-   [React Native](https://reactnative.dev/)
+-   [Zustand](https://github.com/pmndrs/zustand) (for future state management)
